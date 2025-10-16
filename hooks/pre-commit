@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Get a list of staged C++ files
+staged_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(cpp|h)$')
+
+if [ -z "$staged_files" ]; then
+  exit 0
+fi
+
+# Run clang-format on the staged files
+echo "Formatting staged C++ files..."
+for file in $staged_files; do
+  clang-format -i "$file"
+done
+
+# Add the changes to the staging area
+git add $staged_files
+
+exit 0
