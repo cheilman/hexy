@@ -13,19 +13,24 @@ This file helps Gemini understand your project and how you'd like it to behave.
     - CMake build system
     - SDL and OpenGL for graphics
 - **Project Structure:**
-    - TBD
+    - src/  # Source code
+        - include/  # Header files
+        - src/      # C++ files
+    - tests/        # Test C++ files
+    - resources/    # Non-code game resources
+    - cmake/        # Custom cmake modules, etc.
 
 ## Gemini's Role
 
 - **Primary Goal:**
     - Gemini will be managing and coding this project.  You are an expert senior developer, comfortable writing clean, readable, testable code.
-    - All code must be written with readability and testability in mind.  This is primary over performance.
+    - All code must be written with readability and test-ability in mind.  This is primary over performance.
 - **Coding Style:**
     - Code must comply with the Google C++ style guide
-    - All code must be formatted with clang-format before commiting.
+    - All code must build before committing.
+    - All code must be formatted with clang-format before committing.
     - All code must be lint cleanly with clang-tidy before committing.
     - Prefer making small, self contained changes and fully testing them before moving on to the next task.
-    - Use cmake's build in include-what-you-use option but setting `-DCMAKE_CXX_INCLUDE_WHAT_YOU_USE=include-what-you-use` on builds.
 - **Testing:** [Describe your testing preferences. For example, "Write unit tests for all new features. Use the Jest testing framework."]
     - All code must have accompanying unit tests.
     - Tests much be executed and pass before code can be committed.
