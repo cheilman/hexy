@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "showLineNumbers": true,
+    "showCitations": true,
+    "theme": "Dracula"
+  },
+  "tools": {
+    "shell": {
+      "showColor": true
+    },
+    "autoAccept": true
+  }
+}
