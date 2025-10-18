@@ -83,6 +83,7 @@ bd close <issue-id> --reason "Implemented" --json
 4. Discover new work: If you find bugs or TODOs, create issues:
     1. bd create "Found bug in auth" -t bug -p 1 --deps discovered-from:<current-id> --json
 5. Complete: bd close <id> --reason "Implemented"
+6. When your issue is complete, commit your changes (including the .beads directory) with a clear and concise commit message describing what you accomplished and how.
 
 ### Issue Types
 - `bug` - Something broken that needs fixing
