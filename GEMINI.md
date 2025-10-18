@@ -52,3 +52,57 @@ This file helps Gemini understand your project and how you'd like it to behave.
 - Keep commits atomic: commit only the files you touched and list each path explicitly. For tracked files run git commit -m "<scoped message>" -- path/to/file1 path/to/file2. For brand-new files, use the one-liner git restore --staged :/ && git add "path/to/file1" "path/to/file2" && git commit -m "<scoped message>" -- path/to/file1 path/to/file2.
 - Quote any git paths containing brackets or parentheses (e.g., src/app/[candidate]/**) when staging or committing so the shell does not treat them as globs or subshells.
 - Never amend commits unless you have explicit written approval in the task thread.
+
+## Beads
+
+**We track work in Beads instead of Markdown. Run `bd quickstart` to see how.**
+
+Quick reference for agent workflows:
+
+```
+# Find ready work
+bd ready --json | jq '.[0]'
+
+# Create issues during work
+bd create "Discovered bug" -t bug -p 0 --json
+
+# Link discovered work back to parent
+bd dep add <new-id> <parent-id> --type discovered-from
+
+# Update status
+bd update <issue-id> --status in_progress --json
+
+# Complete work
+bd close <issue-id> --reason "Implemented" --json
+```
+
+### Workflow
+1. Check for ready work: Run bd ready to see what's unblocked
+2. Claim your task: bd update <id> --status in_progress
+3. Work on it: Implement, test, document
+4. Discover new work: If you find bugs or TODOs, create issues:
+    1. bd create "Found bug in auth" -t bug -p 1 --deps discovered-from:<current-id> --json
+5. Complete: bd close <id> --reason "Implemented"
+
+### Issue Types
+- `bug` - Something broken that needs fixing
+- `feature` - New functionality
+- `task` - Work item (tests, docs, refactoring)
+- `epic` - Large feature composed of multiple issues
+- `chore` - Maintenance work (dependencies, tooling)
+
+### Priorities
+- `0` - Critical (security, data loss, broken builds)
+- `1` - High (major features, important bugs)
+- `2` - Medium (nice-to-have features, minor bugs)
+- `3` - Low (polish, optimization)
+- `4` - Backlog (future ideas)
+
+### Dependency Types
+- `blocks` - Hard dependency (issue X blocks issue Y)
+- `related` - Soft relationship (issues are connected)
+- `parent-child` - Epic/subtask relationship
+- `discovered-from` - Track issues discovered during work
+
+Only blocks dependencies affect the ready work queue.
+
