@@ -12,16 +12,39 @@
   "tools": {
     "shell": {
       "autoApprove": [
-        "git ",
-        "ls",
-        "vcpkg ",
-        "rm -f build/*",
+        "bd",
         "cmake ",
+        "git ",
+        "hexy",
+        "ls",
         "make ",
-        "hexy"
+        "rm -f build/*",
+        "vcpkg "
       ],
       "showColor": true
     },
-    "autoAccept": true
+    "autoAccept": true,
+    "allowed": [
+      "LSTool",
+      "ReadFileTool",
+      "WriteFileTool",
+      "GrepTool",
+      "GlobTool",
+      "EditTool",
+      "ReadManyFilesTool",
+      "WebFetchTool",
+      "WebSearchTool",
+      "MemoryTool",
+      "run_shell_command(git)",
+      "run_shell_command(bd)",
+      "run_shell_command(cmake)",
+      "run_shell_command(ls)",
+      "run_shell_command(make)",
+      "run_shell_command(vcpkg)",
+      "run_shell_command(rm -f build/)",
+      "run_shell_command(cd)",
+      "run_shell_command(ctest)",
+      "run_shell_command(hexy)"
+    ]
   }
 }

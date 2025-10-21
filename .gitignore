@@ -39,3 +39,15 @@
 
 # debug information files
 *.dwo
+
+#
+# Beads
+#
+
+# .beads directory files (keep JSONL only)
+.beads/.gitignore
+.beads/db.sqlite
+.beads/*.db
+
+# Keep JSONL exports (source of truth for git)
+!.beads/*.jsonl
