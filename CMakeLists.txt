@@ -7,6 +7,6 @@ set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
 find_package(SDL2 REQUIRED)
 
-add_executable(hello_world src/src/main.cpp)
+add_executable(hexy src/src/main.cpp)
 
-target_link_libraries(hello_world PRIVATE SDL2::SDL2)
+target_link_libraries(hexy PRIVATE SDL2::SDL2)
